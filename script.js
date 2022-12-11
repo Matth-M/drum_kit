@@ -32,5 +32,24 @@ function addAudioBox(name, audioSrc) {
 	return box;
 }
 
+function stopAudioBtn() {
+	// Get all audio sources
+	const audios = document.querySelectorAll('audio');
+
+	// Create Stop button
+	const stopBtn = document.createElement('button');
+	stopBtn.textContent = "STOP";
+
+	stopBtn.addEventListener('click', () => {
+		audios.forEach((audio) => {
+			audio.pause();
+			audio.currentTime = 0;
+		})
+	});
+
+	return stopBtn;
+}
+
 container.appendChild(addAudioBox("MonsterBlock", './audio/monster-block-By-Tuna.mp3'));
 container.appendChild(addAudioBox('Here Comes The boomer', './audio/here-comes-the-boom!-By-Tuna.mp3'));
+document.body.appendChild(stopAudioBtn());
