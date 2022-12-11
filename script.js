@@ -40,7 +40,7 @@ function stopAudioBtn() {
 	const stopBtn = document.createElement('button');
 	stopBtn.textContent = "STOP";
 
-	stopBtn.addEventListener('click', () => {
+	stopBtn.addEventListener('touchstart click', () => {
 		audios.forEach((audio) => {
 			audio.pause();
 			audio.currentTime = 0;
