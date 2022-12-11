@@ -3,9 +3,10 @@ body {
 	padding: 0px;
 	margin: 0px;
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
+	row-gap: 50px;
 }
 
 #container{
@@ -17,8 +18,8 @@ body {
 
 .box{
     border: 5px solid gray;
-    width:200px;
-    height:200px;
+    width:400px;
+    height:400px;
     margin:5px;
     padding:5px;
     display:flex;
@@ -35,4 +36,9 @@ p{
 .pressed{
     border: 5px solid goldenrod;
     transform:scale(1.1);
+}
+
+button {
+	padding: 50px;
+	font-size: 30px;
 }
