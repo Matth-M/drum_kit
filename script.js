@@ -1,36 +1,36 @@
-const keys = [
-    'q',
-    's',
-    'd',
-    'f',
-]
-
 const container = document.getElementById('container');
 
+function addAudioBox(name, audioSrc) {
 
-for (const key in keys) {
-    const box = document.createElement('div');
-    box.classList.add("box");
-    box.classList.add(`${keys[key]}`)
-    container.appendChild(box);
+	// Create the box and add style
+	const box = document.createElement('div');
+	box.classList.add("box");
 
-    const p = document.createElement('p');
-    p.innerText = keys[key];
-    box.appendChild(p);
+	const targetAudio = document.createElement('audio');
+	targetAudio.src = audioSrc;
+	box.appendChild(targetAudio);
 
+	// Add click handler
+	box.addEventListener('click', () => {
+
+		targetAudio.currentTime = 0;
+		targetAudio.play();
+
+		box.addEventListener('transitionend', function() {
+			box.classList.remove('pressed');
+		});
+	});
+
+	// Text inside the box
+	const p = document.createElement('p');
+	p.innerText = name;
+	box.appendChild(p);
+
+	const audio = document.createElement('audio');
+	audio.src = audioSrc;
+
+	return box;
 }
 
-document.addEventListener("keydown", function(e){
-	// We select the box corresponding to the key pressed
-	const targetBox = document.querySelector('.'+`${e.key}`);
-	targetBox.classList.add('pressed');
-
-	// Launch the audio
-	const targetAudio = document.querySelector(`audio.${e.key}`);
-	targetAudio.currentTime = 0;
-	targetAudio.play();
-
-	targetBox.addEventListener('transitionend',function(){
-		targetBox.classList.remove('pressed');
-	});
-});
+container.appendChild(addAudioBox("MonsterBlock", './audio/monster-block-By-Tuna.mp3'));
+container.appendChild(addAudioBox('Here Comes The boomer', './audio/here-comes-the-boom!-By-Tuna.mp3'));
