@@ -21,20 +21,16 @@ for (const key in keys) {
 }
 
 document.addEventListener("keydown", function(e){
-    try{
-        const targetBox = document.querySelector('.'+`${e.key}`);
-        targetBox.classList.add('pressed');
-        try{
-            const targetAudio = document.querySelector(`audio.${e.key}`);
-            targetAudio.currentTime = 0;
-            targetAudio.play();
+	// We select the box corresponding to the key pressed
+	const targetBox = document.querySelector('.'+`${e.key}`);
+	targetBox.classList.add('pressed');
 
-        }catch(e){
-            console.log(e);
-        }
-        targetBox.addEventListener('transitionend',function(){
-            targetBox.classList.remove('pressed');
-        });
-    }catch(e){
-    }
+	// Launch the audio
+	const targetAudio = document.querySelector(`audio.${e.key}`);
+	targetAudio.currentTime = 0;
+	targetAudio.play();
+
+	targetBox.addEventListener('transitionend',function(){
+		targetBox.classList.remove('pressed');
+	});
 });
