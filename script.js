@@ -41,7 +41,6 @@ function stopAudioBtn() {
 	stopBtn.textContent = "STOP";
 
 	stopBtn.addEventListener('click', () => {
-		console.log(stopBtn);
 		audios.forEach((audio) => {
 			audio.pause();
 			audio.currentTime = 0;
@@ -53,4 +52,5 @@ function stopAudioBtn() {
 
 container.appendChild(addAudioBox("MonsterBlock", './audio/monster-block-By-Tuna.mp3'));
 container.appendChild(addAudioBox('Here Comes The boomer', './audio/here-comes-the-boom!-By-Tuna.mp3'));
+container.appendChild(addAudioBox('Avion', './audio/Airplane Sound Effect.mp3'));
 document.body.appendChild(stopAudioBtn());
